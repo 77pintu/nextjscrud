@@ -27,7 +27,7 @@ export default function Home({ tasks }) {
   return (
     <div className="container">
       <Link href="/tasks/new" className="btn btn-sm btn-secondary my-5 ">
-        Create Task
+        Create Tasks
       </Link>
       <div className="row">
         {tasks?.map((task) => {
