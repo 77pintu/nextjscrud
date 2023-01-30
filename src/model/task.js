@@ -21,5 +21,5 @@ const taskSchema = new Schema(
     versionKey: false,
   }
 );
-
-export default mongoose.model("Task") || mongoose.model("Task", taskSchema);
+mongoose.models = {};
+export default mongoose.models.Task || mongoose.model("Task", taskSchema);

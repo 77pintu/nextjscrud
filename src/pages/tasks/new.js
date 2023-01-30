@@ -42,7 +42,7 @@ export default function NewTask() {
         </div>
         <div className="mb-3">
           <label htmlFor="description" className="form-label">
-            description
+            Description
           </label>
           <textarea
             name="description"

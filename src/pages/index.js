@@ -6,14 +6,17 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState } from "react";
 export default function Home({ tasks }) {
+  console.log("🚀 ~ file: index.js:9 ~ Home ~ tasks", tasks);
   const router = useRouter();
 
   const deleteTask = async (id) => {
     try {
-      await fetch(`http://localhost:3000/api/tasks/${id}`, {
-        method: "DELETE",
-      });
-      router.push("/");
+      if (confirm("Are you sure want to delete it task?")) {
+        await fetch(`http://localhost:3000/api/tasks/${id}`, {
+          method: "DELETE",
+        });
+        router.push("/");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -27,7 +30,7 @@ export default function Home({ tasks }) {
         Create Task
       </Link>
       <div className="row">
-        {tasks.map((task) => {
+        {tasks?.map((task) => {
           return (
             <div className="col-sm-12 col-md-6 col-lg-3 " key={task.id}>
               <div className="card my-2" style={{ width: "16rem" }}>
@@ -64,6 +67,7 @@ export default function Home({ tasks }) {
 export async function getServerSideProps() {
   const response = await fetch("http://localhost:3000/api/tasks");
   const data = await response.json();
+  console.log("🚀 ~ file: index.js:67 ~ getServerSideProps ~ data", data);
   return {
     props: { tasks: data },
   };

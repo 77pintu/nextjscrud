@@ -28,7 +28,9 @@ export default function Task() {
           "Content-Type": "application/json",
         },
       });
+
       await push("/");
+      alert("Task has been updated successfully");
     } catch (error) {
       console.log(error);
     }
@@ -67,7 +69,7 @@ export default function Task() {
           ></textarea>
         </div>
         <button type="submit" className="btn btn-primary my-3">
-          Create task
+          Update Task
         </button>
       </form>
     </div>
